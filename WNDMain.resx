@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LBLInstructions.Text" xml:space="preserve">
+    <value>Instructions
+------------------------------
+Pesez sur le bouton «Débuter» pour débuter le jeu.
+
+Un chronomètre débutera pour compter la duration de votre jeu.
+
+Vous serez ensuite présenté une série de 10 questions d’arithmétique dont vous devez essayer de répondre correctement le plus vite possible.
+
+À la fin du jeu, vous serez accordé un pointage de 0 étoiles à 5 étoiles dépendant de votre performance.
+
+Vous pouvez basculer l’état du son en utilisant le bouton de son en haut à droite de votre écran.</value>
+  </data>
 </root>
