@@ -130,4 +130,7 @@ Vous serez ensuite présenté une série de 10 questions d’arithmétique dont 
 
 Vous pouvez basculer l’état du son en utilisant le bouton de son en haut à droite de votre écran.</value>
   </data>
+  <metadata name="Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

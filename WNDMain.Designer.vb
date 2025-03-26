@@ -22,6 +22,7 @@ Partial Class WNDMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WNDMain))
         PBXSound = New PictureBox()
         LBLTitle = New Label()
@@ -30,6 +31,13 @@ Partial Class WNDMain
         LBLInstructions = New Label()
         LBLTime = New Label()
         LBLQuestionNumber = New Label()
+        LBLNumber1 = New Label()
+        LBLOperator = New Label()
+        LBLNumber2 = New Label()
+        LBLEqual = New Label()
+        TBXAnswer = New TextBox()
+        BTNContinue = New Label()
+        Timer = New Timer(components)
         CType(PBXSound, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -47,7 +55,7 @@ Partial Class WNDMain
         ' LBLTitle
         ' 
         LBLTitle.BackColor = Color.Transparent
-        LBLTitle.Font = New Font("Viner Hand ITC", 30.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LBLTitle.Font = New Font("Viner Hand ITC", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         LBLTitle.ForeColor = Color.White
         LBLTitle.Location = New Point(27, 12)
         LBLTitle.Name = "LBLTitle"
@@ -59,7 +67,7 @@ Partial Class WNDMain
         ' BTNInstructions
         ' 
         BTNInstructions.BackColor = Color.Transparent
-        BTNInstructions.Font = New Font("Comic Sans MS", 30.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BTNInstructions.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BTNInstructions.ForeColor = Color.White
         BTNInstructions.Location = New Point(38, 504)
         BTNInstructions.Name = "BTNInstructions"
@@ -71,7 +79,7 @@ Partial Class WNDMain
         ' BTNStart
         ' 
         BTNStart.BackColor = Color.Transparent
-        BTNStart.Font = New Font("Comic Sans MS", 30.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BTNStart.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BTNStart.ForeColor = Color.White
         BTNStart.Location = New Point(38, 260)
         BTNStart.Name = "BTNStart"
@@ -83,7 +91,7 @@ Partial Class WNDMain
         ' LBLInstructions
         ' 
         LBLInstructions.BackColor = Color.Transparent
-        LBLInstructions.Font = New Font("Comic Sans MS", 8.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLInstructions.Font = New Font("Comic Sans MS", 8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LBLInstructions.ForeColor = Color.White
         LBLInstructions.Location = New Point(36, 341)
         LBLInstructions.Name = "LBLInstructions"
@@ -96,7 +104,7 @@ Partial Class WNDMain
         ' LBLTime
         ' 
         LBLTime.BackColor = Color.Transparent
-        LBLTime.Font = New Font("Comic Sans MS", 40.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLTime.Font = New Font("Comic Sans MS", 40F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LBLTime.ForeColor = Color.White
         LBLTime.Location = New Point(366, 92)
         LBLTime.Name = "LBLTime"
@@ -104,12 +112,11 @@ Partial Class WNDMain
         LBLTime.TabIndex = 5
         LBLTime.Text = "00 : 00"
         LBLTime.TextAlign = ContentAlignment.MiddleCenter
-        LBLTime.Visible = False
         ' 
         ' LBLQuestionNumber
         ' 
         LBLQuestionNumber.BackColor = Color.Transparent
-        LBLQuestionNumber.Font = New Font("Comic Sans MS", 20.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLQuestionNumber.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LBLQuestionNumber.ForeColor = Color.White
         LBLQuestionNumber.Location = New Point(16, 15)
         LBLQuestionNumber.Name = "LBLQuestionNumber"
@@ -119,13 +126,91 @@ Partial Class WNDMain
         LBLQuestionNumber.TextAlign = ContentAlignment.MiddleCenter
         LBLQuestionNumber.Visible = False
         ' 
+        ' LBLNumber1
+        ' 
+        LBLNumber1.BackColor = Color.Transparent
+        LBLNumber1.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLNumber1.Location = New Point(71, 319)
+        LBLNumber1.Name = "LBLNumber1"
+        LBLNumber1.Size = New Size(130, 82)
+        LBLNumber1.TabIndex = 7
+        LBLNumber1.Text = "1"
+        LBLNumber1.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' LBLOperator
+        ' 
+        LBLOperator.BackColor = Color.Transparent
+        LBLOperator.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLOperator.Location = New Point(221, 319)
+        LBLOperator.Name = "LBLOperator"
+        LBLOperator.Size = New Size(130, 82)
+        LBLOperator.TabIndex = 8
+        LBLOperator.Text = "+"
+        LBLOperator.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' LBLNumber2
+        ' 
+        LBLNumber2.BackColor = Color.Transparent
+        LBLNumber2.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLNumber2.Location = New Point(371, 319)
+        LBLNumber2.Name = "LBLNumber2"
+        LBLNumber2.Size = New Size(130, 82)
+        LBLNumber2.TabIndex = 9
+        LBLNumber2.Text = "1"
+        LBLNumber2.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' LBLEqual
+        ' 
+        LBLEqual.BackColor = Color.Transparent
+        LBLEqual.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLEqual.Location = New Point(521, 319)
+        LBLEqual.Name = "LBLEqual"
+        LBLEqual.Size = New Size(130, 82)
+        LBLEqual.TabIndex = 10
+        LBLEqual.Text = "="
+        LBLEqual.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' TBXAnswer
+        ' 
+        TBXAnswer.BackColor = Color.FromArgb(CByte(207), CByte(226), CByte(243))
+        TBXAnswer.BorderStyle = BorderStyle.None
+        TBXAnswer.Font = New Font("Comic Sans MS", 30F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBXAnswer.Location = New Point(671, 329)
+        TBXAnswer.Margin = New Padding(0)
+        TBXAnswer.Name = "TBXAnswer"
+        TBXAnswer.Size = New Size(219, 56)
+        TBXAnswer.TabIndex = 11
+        TBXAnswer.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' BTNContinue
+        ' 
+        BTNContinue.BackColor = Color.Transparent
+        BTNContinue.Font = New Font("Comic Sans MS", 40F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BTNContinue.ForeColor = Color.White
+        BTNContinue.Location = New Point(326, 538)
+        BTNContinue.Name = "BTNContinue"
+        BTNContinue.Size = New Size(307, 93)
+        BTNContinue.TabIndex = 12
+        BTNContinue.Text = "Continuer"
+        BTNContinue.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' Timer
+        ' 
+        Timer.Interval = 1000
+        ' 
         ' WNDMain
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.Page_1
+        BackgroundImage = My.Resources.Resources.Page_3
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(958, 718)
+        Controls.Add(BTNContinue)
+        Controls.Add(TBXAnswer)
+        Controls.Add(LBLEqual)
+        Controls.Add(LBLNumber2)
+        Controls.Add(LBLOperator)
+        Controls.Add(LBLNumber1)
         Controls.Add(LBLQuestionNumber)
         Controls.Add(LBLTime)
         Controls.Add(LBLInstructions)
@@ -139,6 +224,7 @@ Partial Class WNDMain
         Text = "L'empire arithmétique"
         CType(PBXSound, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents PBXSound As PictureBox
@@ -148,5 +234,12 @@ Partial Class WNDMain
     Friend WithEvents LBLInstructions As Label
     Friend WithEvents LBLTime As Label
     Friend WithEvents LBLQuestionNumber As Label
+    Friend WithEvents LBLNumber1 As Label
+    Friend WithEvents LBLOperator As Label
+    Friend WithEvents LBLNumber2 As Label
+    Friend WithEvents LBLEqual As Label
+    Friend WithEvents TBXAnswer As TextBox
+    Friend WithEvents BTNContinue As Label
+    Friend WithEvents Timer As Timer
 
 End Class
