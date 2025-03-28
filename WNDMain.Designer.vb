@@ -40,6 +40,10 @@ Partial Class WNDMain
         Timer = New Timer(components)
         LBLError = New Label()
         BTNRestart = New Label()
+        LBLWonQuestionsInfo = New Label()
+        LBLWonPercentageInfo = New Label()
+        LBLCorrectQuestions = New Label()
+        LBLWonPercentage = New Label()
         CType(PBXSound, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -233,13 +237,69 @@ Partial Class WNDMain
         BTNRestart.TextAlign = ContentAlignment.MiddleCenter
         BTNRestart.Visible = False
         ' 
+        ' LBLWonQuestionsInfo
+        ' 
+        LBLWonQuestionsInfo.BackColor = Color.Transparent
+        LBLWonQuestionsInfo.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLWonQuestionsInfo.ForeColor = Color.White
+        LBLWonQuestionsInfo.Location = New Point(242, 326)
+        LBLWonQuestionsInfo.Name = "LBLWonQuestionsInfo"
+        LBLWonQuestionsInfo.Size = New Size(354, 81)
+        LBLWonQuestionsInfo.TabIndex = 15
+        LBLWonQuestionsInfo.Text = "Questions correctes"
+        LBLWonQuestionsInfo.TextAlign = ContentAlignment.MiddleCenter
+        LBLWonQuestionsInfo.Visible = False
+        ' 
+        ' LBLWonPercentageInfo
+        ' 
+        LBLWonPercentageInfo.BackColor = Color.Transparent
+        LBLWonPercentageInfo.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLWonPercentageInfo.ForeColor = Color.White
+        LBLWonPercentageInfo.Location = New Point(242, 429)
+        LBLWonPercentageInfo.Name = "LBLWonPercentageInfo"
+        LBLWonPercentageInfo.Size = New Size(354, 81)
+        LBLWonPercentageInfo.TabIndex = 16
+        LBLWonPercentageInfo.Text = "Pourcentage de réussite"
+        LBLWonPercentageInfo.TextAlign = ContentAlignment.MiddleCenter
+        LBLWonPercentageInfo.Visible = False
+        ' 
+        ' LBLCorrectQuestions
+        ' 
+        LBLCorrectQuestions.BackColor = Color.Transparent
+        LBLCorrectQuestions.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLCorrectQuestions.ForeColor = Color.White
+        LBLCorrectQuestions.Location = New Point(618, 326)
+        LBLCorrectQuestions.Name = "LBLCorrectQuestions"
+        LBLCorrectQuestions.Size = New Size(100, 81)
+        LBLCorrectQuestions.TabIndex = 17
+        LBLCorrectQuestions.Text = "0"
+        LBLCorrectQuestions.TextAlign = ContentAlignment.MiddleCenter
+        LBLCorrectQuestions.Visible = False
+        ' 
+        ' LBLWonPercentage
+        ' 
+        LBLWonPercentage.BackColor = Color.Transparent
+        LBLWonPercentage.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLWonPercentage.ForeColor = Color.White
+        LBLWonPercentage.Location = New Point(618, 429)
+        LBLWonPercentage.Name = "LBLWonPercentage"
+        LBLWonPercentage.Size = New Size(100, 81)
+        LBLWonPercentage.TabIndex = 18
+        LBLWonPercentage.Text = "0%"
+        LBLWonPercentage.TextAlign = ContentAlignment.MiddleCenter
+        LBLWonPercentage.Visible = False
+        ' 
         ' WNDMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.Page_1
+        BackgroundImage = My.Resources.Resources.Page_4
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(958, 718)
+        Controls.Add(LBLWonPercentage)
+        Controls.Add(LBLCorrectQuestions)
+        Controls.Add(LBLWonPercentageInfo)
+        Controls.Add(LBLWonQuestionsInfo)
         Controls.Add(BTNRestart)
         Controls.Add(LBLError)
         Controls.Add(BTNContinue)
@@ -280,5 +340,9 @@ Partial Class WNDMain
     Friend WithEvents Timer As Timer
     Friend WithEvents LBLError As Label
     Friend WithEvents BTNRestart As Label
+    Friend WithEvents LBLWonQuestionsInfo As Label
+    Friend WithEvents LBLWonPercentageInfo As Label
+    Friend WithEvents LBLCorrectQuestions As Label
+    Friend WithEvents LBLWonPercentage As Label
 
 End Class

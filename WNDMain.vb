@@ -13,8 +13,8 @@ Public Class WNDMain
     Public GamesPlayed As Integer = 0
     Public GamesWon As Integer = 0
     Public Choice As Integer = 0
-    Public StrNumber1 As String = ""
-    Public StrNumber2 As String = ""
+    Public StrMin As String = ""
+    Public StrSec As String = ""
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
         Timer.Start()
         ' Hide unused elements
@@ -91,15 +91,17 @@ Public Class WNDMain
         TimeMin = Fix(Time / 60)
         TimeSec = Time - (60 * TimeMin)
         Console.WriteLine(CStr(TimeSec))
-        If TimeMin < 10 & TimeSec >= 10 Then
-            LBLTime.Text = "0" + CStr(TimeMin) + " : " + CStr(TimeSec)
-        ElseIf TimeMin >= 10 & TimeSec < 10 Then
-            LBLTime.Text = CStr(TimeMin) + " : 0" + CStr(TimeSec)
-        ElseIf TimeMin < 10 & TimeSec < 10 Then
-            LBLTime.Text = "0" + CStr(TimeMin) + " : 0" + CStr(TimeSec)
+        If TimeMin < 10 Then
+            StrMin = "0" + CStr(TimeMin)
         Else
-            LBLTime.Text = CStr(TimeMin) + " : " + CStr(TimeSec)
+            StrMin = CStr(TimeMin)
         End If
+        If TimeSec < 10 Then
+            StrSec = "0" + CStr(TimeSec)
+        Else
+            StrSec = CStr(TimeSec)
+        End If
+        LBLTime.Text = StrMin + " : " + StrSec
     End Sub
 
     Private Sub BTNContinue_Click(sender As Object, e As EventArgs) Handles BTNContinue.Click
