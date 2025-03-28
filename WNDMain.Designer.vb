@@ -38,6 +38,8 @@ Partial Class WNDMain
         TBXAnswer = New TextBox()
         BTNContinue = New Label()
         Timer = New Timer(components)
+        LBLError = New Label()
+        BTNRestart = New Label()
         CType(PBXSound, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -117,13 +119,13 @@ Partial Class WNDMain
         ' LBLQuestionNumber
         ' 
         LBLQuestionNumber.BackColor = Color.Transparent
-        LBLQuestionNumber.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLQuestionNumber.Font = New Font("Comic Sans MS", 19F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LBLQuestionNumber.ForeColor = Color.White
         LBLQuestionNumber.Location = New Point(16, 15)
         LBLQuestionNumber.Name = "LBLQuestionNumber"
         LBLQuestionNumber.Size = New Size(67, 39)
         LBLQuestionNumber.TabIndex = 6
-        LBLQuestionNumber.Text = "#1"
+        LBLQuestionNumber.Text = "#10"
         LBLQuestionNumber.TextAlign = ContentAlignment.MiddleCenter
         LBLQuestionNumber.Visible = False
         ' 
@@ -205,6 +207,32 @@ Partial Class WNDMain
         ' 
         Timer.Interval = 1000
         ' 
+        ' LBLError
+        ' 
+        LBLError.BackColor = Color.Transparent
+        LBLError.Font = New Font("Comic Sans MS", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLError.ForeColor = Color.Navy
+        LBLError.Location = New Point(297, 659)
+        LBLError.Name = "LBLError"
+        LBLError.Size = New Size(380, 24)
+        LBLError.TabIndex = 13
+        LBLError.Text = "Veuillez entrer une valeure numérique!"
+        LBLError.TextAlign = ContentAlignment.MiddleCenter
+        LBLError.Visible = False
+        ' 
+        ' BTNRestart
+        ' 
+        BTNRestart.BackColor = Color.Transparent
+        BTNRestart.Font = New Font("Comic Sans MS", 40F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BTNRestart.ForeColor = Color.White
+        BTNRestart.Location = New Point(283, 576)
+        BTNRestart.Name = "BTNRestart"
+        BTNRestart.Size = New Size(395, 95)
+        BTNRestart.TabIndex = 14
+        BTNRestart.Text = "Recommencer"
+        BTNRestart.TextAlign = ContentAlignment.MiddleCenter
+        BTNRestart.Visible = False
+        ' 
         ' WNDMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -212,6 +240,8 @@ Partial Class WNDMain
         BackgroundImage = My.Resources.Resources.Page_1
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(958, 718)
+        Controls.Add(BTNRestart)
+        Controls.Add(LBLError)
         Controls.Add(BTNContinue)
         Controls.Add(TBXAnswer)
         Controls.Add(LBLEqual)
@@ -248,5 +278,7 @@ Partial Class WNDMain
     Friend WithEvents TBXAnswer As TextBox
     Friend WithEvents BTNContinue As Label
     Friend WithEvents Timer As Timer
+    Friend WithEvents LBLError As Label
+    Friend WithEvents BTNRestart As Label
 
 End Class

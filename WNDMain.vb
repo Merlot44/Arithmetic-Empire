@@ -13,6 +13,8 @@ Public Class WNDMain
     Public GamesPlayed As Integer = 0
     Public GamesWon As Integer = 0
     Public Choice As Integer = 0
+    Public StrNumber1 As String = ""
+    Public StrNumber2 As String = ""
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
         Timer.Start()
         ' Hide unused elements
@@ -29,26 +31,26 @@ Public Class WNDMain
         LBLQuestionNumber.Visible = True
 
         Randomize()
-        OperatorVal = (Rnd() * 4)
+        OperatorVal = Fix(Rnd() * 4)
         If OperatorVal = 0 Then
             LBLOperator.Text = "+"
-            Number1 = (Rnd() * 21)
-            Number2 = (Rnd() * 21)
+            Number1 = Fix(Rnd() * 21)
+            Number2 = Fix(Rnd() * 21)
             Answer = Number1 + Number2
         ElseIf OperatorVal = 1 Then
             LBLOperator.Text = "-"
-            Answer = (Rnd() * 21)
-            Number2 = (Rnd() * 21)
+            Answer = Fix(Rnd() * 21)
+            Number2 = Fix(Rnd() * 21)
             Number1 = Answer + Number2
         ElseIf OperatorVal = 2 Then
             LBLOperator.Text = "×"
-            Number1 = (Rnd() * 21)
-            Number2 = (Rnd() * 21)
+            Number1 = Fix(Rnd() * 21)
+            Number2 = Fix(Rnd() * 21)
             Answer = Number1 * Number2
         ElseIf OperatorVal = 3 Then
             LBLOperator.Text = "÷"
-            Answer = (Rnd() * 21)
-            Number2 = (Rnd() * 20) + 1
+            Answer = Fix(Rnd() * 21)
+            Number2 = Fix((Rnd() * 21) + 1)
             Number1 = Answer * Number2
         End If
 
@@ -79,55 +81,85 @@ Public Class WNDMain
         PBXSound.Cursor = Cursors.Hand
     End Sub
     Private Sub BTNContinue_MouseHover(sender As Object, e As EventArgs) Handles BTNContinue.MouseHover
-        PBXSound.Cursor = Cursors.Hand
+        BTNContinue.Cursor = Cursors.Hand
+    End Sub
+    Private Sub BTNRestart_MouseHover(sender As Object, e As EventArgs) Handles BTNRestart.MouseHover
+        BTNRestart.Cursor = Cursors.Hand
     End Sub
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         Time += 1
         TimeMin = Fix(Time / 60)
         TimeSec = Time - (60 * TimeMin)
         Console.WriteLine(CStr(TimeSec))
-        If TimeMin < 10 Then
+        If TimeMin < 10 & TimeSec >= 10 Then
             LBLTime.Text = "0" + CStr(TimeMin) + " : " + CStr(TimeSec)
-        ElseIf TimeSec < 10 Then
+        ElseIf TimeMin >= 10 & TimeSec < 10 Then
             LBLTime.Text = CStr(TimeMin) + " : 0" + CStr(TimeSec)
+        ElseIf TimeMin < 10 & TimeSec < 10 Then
+            LBLTime.Text = "0" + CStr(TimeMin) + " : 0" + CStr(TimeSec)
         Else
             LBLTime.Text = CStr(TimeMin) + " : " + CStr(TimeSec)
         End If
     End Sub
 
     Private Sub BTNContinue_Click(sender As Object, e As EventArgs) Handles BTNContinue.Click
-        Choice = CInt(TBXAnswer.Text)
-        GamesPlayed += 1
-        If Choice = Answer Then
-            GamesWon += 1
+        If IsNumeric(TBXAnswer.Text) Then
+            LBLError.Visible = False
+            Choice = CInt(TBXAnswer.Text)
+            GamesPlayed += 1
             If QuestionNumber < 10 Then
                 QuestionNumber += 1
                 LBLQuestionNumber.Text = "#" + CStr(QuestionNumber)
-                OperatorVal = (Rnd() * 4)
+                OperatorVal = Fix(Rnd() * 4)
                 If OperatorVal = 0 Then
                     LBLOperator.Text = "+"
-                    Number1 = (Rnd() * 21)
-                    Number2 = (Rnd() * 21)
+                    Number1 = Fix(Rnd() * 21)
+                    Number2 = Fix(Rnd() * 21)
                     Answer = Number1 + Number2
                 ElseIf OperatorVal = 1 Then
                     LBLOperator.Text = "-"
-                    Answer = (Rnd() * 21)
-                    Number2 = (Rnd() * 21)
+                    Answer = Fix(Rnd() * 21)
+                    Number2 = Fix(Rnd() * 21)
                     Number1 = Answer + Number2
                 ElseIf OperatorVal = 2 Then
                     LBLOperator.Text = "×"
-                    Number1 = (Rnd() * 21)
-                    Number2 = (Rnd() * 21)
+                    Number1 = Fix(Rnd() * 21)
+                    Number2 = Fix(Rnd() * 21)
                     Answer = Number1 * Number2
                 ElseIf OperatorVal = 3 Then
                     LBLOperator.Text = "÷"
-                    Answer = (Rnd() * 401)
-                    Number2 = (Rnd() * 20) + 1
+                    Answer = Fix(Rnd() * 21)
+                    Number2 = Fix((Rnd() * 20) + 1)
                     Number1 = Answer * Number2
                 End If
                 LBLNumber1.Text = CStr(Number1)
                 LBLNumber2.Text = CStr(Number2)
+
+                If Choice = Answer Then
+                    GamesWon += 1
+                End If
+            Else
+                Timer.Stop()
+                LBLQuestionNumber.Visible = False
+                LBLNumber1.Visible = False
+                LBLOperator.Visible = False
+                LBLNumber2.Visible = False
+                TBXAnswer.Visible = False
+                BTNContinue.Visible = False
+                LBLEqual.Visible = False
+
+                LBLTime.Location = New Point(367, 31)
+                LBLTime.Size = New Point(226, 94)
+
+                BackgroundImage = My.Resources.Page_4
             End If
+            TBXAnswer.Text = ""
+        Else
+            LBLError.Visible = True
         End If
+    End Sub
+
+    Private Sub TBXAnswer_TextChanged(sender As Object, e As EventArgs) Handles TBXAnswer.TextChanged
+        LBLError.Visible = False
     End Sub
 End Class
