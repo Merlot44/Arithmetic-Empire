@@ -112,6 +112,7 @@ Partial Class WNDMain
         LBLTime.TabIndex = 5
         LBLTime.Text = "00 : 00"
         LBLTime.TextAlign = ContentAlignment.MiddleCenter
+        LBLTime.Visible = False
         ' 
         ' LBLQuestionNumber
         ' 
@@ -136,6 +137,7 @@ Partial Class WNDMain
         LBLNumber1.TabIndex = 7
         LBLNumber1.Text = "1"
         LBLNumber1.TextAlign = ContentAlignment.MiddleCenter
+        LBLNumber1.Visible = False
         ' 
         ' LBLOperator
         ' 
@@ -147,6 +149,7 @@ Partial Class WNDMain
         LBLOperator.TabIndex = 8
         LBLOperator.Text = "+"
         LBLOperator.TextAlign = ContentAlignment.MiddleCenter
+        LBLOperator.Visible = False
         ' 
         ' LBLNumber2
         ' 
@@ -158,6 +161,7 @@ Partial Class WNDMain
         LBLNumber2.TabIndex = 9
         LBLNumber2.Text = "1"
         LBLNumber2.TextAlign = ContentAlignment.MiddleCenter
+        LBLNumber2.Visible = False
         ' 
         ' LBLEqual
         ' 
@@ -169,6 +173,7 @@ Partial Class WNDMain
         LBLEqual.TabIndex = 10
         LBLEqual.Text = "="
         LBLEqual.TextAlign = ContentAlignment.MiddleCenter
+        LBLEqual.Visible = False
         ' 
         ' TBXAnswer
         ' 
@@ -181,6 +186,7 @@ Partial Class WNDMain
         TBXAnswer.Size = New Size(219, 56)
         TBXAnswer.TabIndex = 11
         TBXAnswer.TextAlign = HorizontalAlignment.Center
+        TBXAnswer.Visible = False
         ' 
         ' BTNContinue
         ' 
@@ -193,6 +199,7 @@ Partial Class WNDMain
         BTNContinue.TabIndex = 12
         BTNContinue.Text = "Continuer"
         BTNContinue.TextAlign = ContentAlignment.MiddleCenter
+        BTNContinue.Visible = False
         ' 
         ' Timer
         ' 
@@ -202,7 +209,7 @@ Partial Class WNDMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.Page_3
+        BackgroundImage = My.Resources.Resources.Page_1
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(958, 718)
         Controls.Add(BTNContinue)
