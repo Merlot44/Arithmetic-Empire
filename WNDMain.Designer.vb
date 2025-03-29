@@ -42,9 +42,11 @@ Partial Class WNDMain
         BTNRestart = New Label()
         LBLWonQuestionsInfo = New Label()
         LBLWonPercentageInfo = New Label()
-        LBLCorrectQuestions = New Label()
+        LBLWonQuestions = New Label()
         LBLWonPercentage = New Label()
+        PBXStars = New PictureBox()
         CType(PBXSound, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PBXStars, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PBXSound
@@ -61,7 +63,7 @@ Partial Class WNDMain
         ' LBLTitle
         ' 
         LBLTitle.BackColor = Color.Transparent
-        LBLTitle.Font = New Font("Viner Hand ITC", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LBLTitle.Font = New Font("Microsoft Sans Serif", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         LBLTitle.ForeColor = Color.White
         LBLTitle.Location = New Point(27, 12)
         LBLTitle.Name = "LBLTitle"
@@ -129,7 +131,7 @@ Partial Class WNDMain
         LBLQuestionNumber.Name = "LBLQuestionNumber"
         LBLQuestionNumber.Size = New Size(67, 39)
         LBLQuestionNumber.TabIndex = 6
-        LBLQuestionNumber.Text = "#10"
+        LBLQuestionNumber.Text = "#1"
         LBLQuestionNumber.TextAlign = ContentAlignment.MiddleCenter
         LBLQuestionNumber.Visible = False
         ' 
@@ -263,18 +265,18 @@ Partial Class WNDMain
         LBLWonPercentageInfo.TextAlign = ContentAlignment.MiddleCenter
         LBLWonPercentageInfo.Visible = False
         ' 
-        ' LBLCorrectQuestions
+        ' LBLWonQuestions
         ' 
-        LBLCorrectQuestions.BackColor = Color.Transparent
-        LBLCorrectQuestions.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LBLCorrectQuestions.ForeColor = Color.White
-        LBLCorrectQuestions.Location = New Point(618, 326)
-        LBLCorrectQuestions.Name = "LBLCorrectQuestions"
-        LBLCorrectQuestions.Size = New Size(100, 81)
-        LBLCorrectQuestions.TabIndex = 17
-        LBLCorrectQuestions.Text = "0"
-        LBLCorrectQuestions.TextAlign = ContentAlignment.MiddleCenter
-        LBLCorrectQuestions.Visible = False
+        LBLWonQuestions.BackColor = Color.Transparent
+        LBLWonQuestions.Font = New Font("Comic Sans MS", 20F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LBLWonQuestions.ForeColor = Color.White
+        LBLWonQuestions.Location = New Point(618, 326)
+        LBLWonQuestions.Name = "LBLWonQuestions"
+        LBLWonQuestions.Size = New Size(100, 81)
+        LBLWonQuestions.TabIndex = 17
+        LBLWonQuestions.Text = "0"
+        LBLWonQuestions.TextAlign = ContentAlignment.MiddleCenter
+        LBLWonQuestions.Visible = False
         ' 
         ' LBLWonPercentage
         ' 
@@ -289,15 +291,28 @@ Partial Class WNDMain
         LBLWonPercentage.TextAlign = ContentAlignment.MiddleCenter
         LBLWonPercentage.Visible = False
         ' 
+        ' PBXStars
+        ' 
+        PBXStars.BackColor = Color.Transparent
+        PBXStars.Image = My.Resources.Resources.Étoiles_0
+        PBXStars.Location = New Point(221, 176)
+        PBXStars.Name = "PBXStars"
+        PBXStars.Size = New Size(532, 90)
+        PBXStars.SizeMode = PictureBoxSizeMode.Zoom
+        PBXStars.TabIndex = 19
+        PBXStars.TabStop = False
+        PBXStars.Visible = False
+        ' 
         ' WNDMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.Page_4
+        BackgroundImage = My.Resources.Resources.Page_1
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(958, 718)
+        Controls.Add(PBXStars)
         Controls.Add(LBLWonPercentage)
-        Controls.Add(LBLCorrectQuestions)
+        Controls.Add(LBLWonQuestions)
         Controls.Add(LBLWonPercentageInfo)
         Controls.Add(LBLWonQuestionsInfo)
         Controls.Add(BTNRestart)
@@ -320,6 +335,7 @@ Partial Class WNDMain
         Name = "WNDMain"
         Text = "L'empire arithmétique"
         CType(PBXSound, ComponentModel.ISupportInitialize).EndInit()
+        CType(PBXStars, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -342,7 +358,8 @@ Partial Class WNDMain
     Friend WithEvents BTNRestart As Label
     Friend WithEvents LBLWonQuestionsInfo As Label
     Friend WithEvents LBLWonPercentageInfo As Label
-    Friend WithEvents LBLCorrectQuestions As Label
+    Friend WithEvents LBLWonQuestions As Label
     Friend WithEvents LBLWonPercentage As Label
+    Friend WithEvents PBXStars As PictureBox
 
 End Class

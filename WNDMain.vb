@@ -1,7 +1,6 @@
 ﻿Imports System.Drawing.Text
 
 Public Class WNDMain
-    Public QuestionPeriod As Boolean = False
     Public Time As Integer = 0
     Public TimeMin As Integer = 0
     Public TimeSec As Integer = 0
@@ -90,7 +89,6 @@ Public Class WNDMain
         Time += 1
         TimeMin = Fix(Time / 60)
         TimeSec = Time - (60 * TimeMin)
-        Console.WriteLine(CStr(TimeSec))
         If TimeMin < 10 Then
             StrMin = "0" + CStr(TimeMin)
         Else
@@ -109,6 +107,9 @@ Public Class WNDMain
             LBLError.Visible = False
             Choice = CInt(TBXAnswer.Text)
             GamesPlayed += 1
+            If Choice = Answer Then
+                GamesWon += 1
+            End If
             If QuestionNumber < 10 Then
                 QuestionNumber += 1
                 LBLQuestionNumber.Text = "#" + CStr(QuestionNumber)
@@ -136,12 +137,22 @@ Public Class WNDMain
                 End If
                 LBLNumber1.Text = CStr(Number1)
                 LBLNumber2.Text = CStr(Number2)
-
-                If Choice = Answer Then
-                    GamesWon += 1
-                End If
             Else
+                If Time <= 15 Then
+                    PBXStars.Image = My.Resources.Étoiles_5
+                ElseIf Time <= 30 Then
+                    PBXStars.Image = My.Resources.Étoiles_4
+                ElseIf Time <= 60 Then
+                    PBXStars.Image = My.Resources.Étoiles_3
+                ElseIf Time <= 90 Then
+                    PBXStars.Image = My.Resources.Étoiles_2
+                ElseIf Time <= 135 Then
+                    PBXStars.Image = My.Resources.Étoiles_1
+                Else
+                    PBXStars.Image = My.Resources.Étoiles_0
+                End If
                 Timer.Stop()
+                PBXStars.Visible = True
                 LBLQuestionNumber.Visible = False
                 LBLNumber1.Visible = False
                 LBLOperator.Visible = False
@@ -149,11 +160,16 @@ Public Class WNDMain
                 TBXAnswer.Visible = False
                 BTNContinue.Visible = False
                 LBLEqual.Visible = False
-
                 LBLTime.Location = New Point(367, 31)
                 LBLTime.Size = New Point(226, 94)
-
                 BackgroundImage = My.Resources.Page_4
+                LBLWonQuestionsInfo.Visible = True
+                LBLWonQuestions.Text = CStr(GamesWon)
+                LBLWonQuestions.Visible = True
+                LBLWonPercentageInfo.Visible = True
+                LBLWonPercentage.Text = CStr((GamesWon / GamesPlayed) * 100) + "%"
+                LBLWonPercentage.Visible = True
+                BTNRestart.Visible = True
             End If
             TBXAnswer.Text = ""
         Else
@@ -163,5 +179,45 @@ Public Class WNDMain
 
     Private Sub TBXAnswer_TextChanged(sender As Object, e As EventArgs) Handles TBXAnswer.TextChanged
         LBLError.Visible = False
+    End Sub
+
+    Private Sub BTNRestart_Click(sender As Object, e As EventArgs) Handles BTNRestart.Click
+        LBLTime.Visible = False
+        PBXStars.Visible = False
+        LBLWonQuestionsInfo.Visible = False
+        LBLWonQuestions.Visible = False
+        LBLWonPercentageInfo.Visible = False
+        LBLWonPercentage.Visible = False
+        BTNRestart.Visible = False
+        BackgroundImage = My.Resources.Page_1
+        LBLTitle.Visible = True
+        BTNStart.Visible = True
+        BTNInstructions.Visible = True
+        LBLTime.Location = New Point(366, 92)
+        LBLTime.Size = New Point(228, 97)
+        BTNStart.Location = New Point(38, 260)
+
+        LBLTime.Text = "00 : 00"
+        TBXAnswer.Text = ""
+        LBLQuestionNumber.Text = "#1"
+        LBLNumber1.Text = "1"
+        LBLNumber2.Text = "1"
+        LBLOperator.Text = "+"
+        LBLWonQuestions.Text = 0
+        LBLWonPercentage.Text = 0%
+
+        Time = 0
+        TimeMin = 0
+        TimeSec = 0
+        OperatorVal = 0
+        Number1 = 0
+        Number2 = 0
+        Answer = 0
+        QuestionNumber = 0
+        GamesPlayed = 0
+        GamesWon = 0
+        Choice = 0
+        StrMin = ""
+        StrSec = ""
     End Sub
 End Class
