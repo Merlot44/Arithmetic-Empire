@@ -14,6 +14,7 @@ Public Class WNDMain
     Public Choice As Integer = 0
     Public StrMin As String = ""
     Public StrSec As String = ""
+    Public Sound As Boolean = True
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
         Timer.Start()
         ' Hide unused elements
@@ -63,12 +64,20 @@ Public Class WNDMain
         LBLEqual.Visible = True
         TBXAnswer.Visible = True
         BTNContinue.Visible = True
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
     End Sub
     Private Sub BTNInstructions_Click(sender As Object, e As EventArgs) Handles BTNInstructions.Click
         BTNInstructions.Visible = False
         BackgroundImage = My.Resources.Page_2
         BTNStart.Location = New Point(38, 192)
         LBLInstructions.Visible = True
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
     End Sub
     Private Sub BTNStart_MouseHover(sender As Object, e As EventArgs) Handles BTNStart.MouseHover
         BTNStart.Cursor = Cursors.Hand
@@ -175,6 +184,10 @@ Public Class WNDMain
         Else
             LBLError.Visible = True
         End If
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
     End Sub
 
     Private Sub TBXAnswer_TextChanged(sender As Object, e As EventArgs) Handles TBXAnswer.TextChanged
@@ -219,5 +232,28 @@ Public Class WNDMain
         Choice = 0
         StrMin = ""
         StrSec = ""
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
+    End Sub
+
+    Private Sub PBXSound_Click(sender As Object, e As EventArgs) Handles PBXSound.Click
+        ' Change the sound status
+        Sound = Not Sound
+
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+
+            ' Set the image to the green speaker
+            PBXSound.Image = My.Resources.Unmute
+        Else
+            ' Stop all audio
+            My.Computer.Audio.Stop()
+
+            ' Set the image to the red speaker
+            PBXSound.Image = My.Resources.Mute
+        End If
     End Sub
 End Class
