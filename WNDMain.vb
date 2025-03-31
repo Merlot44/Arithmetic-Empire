@@ -16,6 +16,10 @@ Public Class WNDMain
     Public StrSec As String = ""
     Public Sound As Boolean = True
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
         Timer.Start()
         ' Hide unused elements
         LBLTitle.Visible = False
@@ -64,20 +68,16 @@ Public Class WNDMain
         LBLEqual.Visible = True
         TBXAnswer.Visible = True
         BTNContinue.Visible = True
+    End Sub
+    Private Sub BTNInstructions_Click(sender As Object, e As EventArgs) Handles BTNInstructions.Click
         If Sound = True Then
             ' Play the click sound
             My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
         End If
-    End Sub
-    Private Sub BTNInstructions_Click(sender As Object, e As EventArgs) Handles BTNInstructions.Click
         BTNInstructions.Visible = False
         BackgroundImage = My.Resources.Page_2
         BTNStart.Location = New Point(38, 192)
         LBLInstructions.Visible = True
-        If Sound = True Then
-            ' Play the click sound
-            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
-        End If
     End Sub
     Private Sub BTNStart_MouseHover(sender As Object, e As EventArgs) Handles BTNStart.MouseHover
         BTNStart.Cursor = Cursors.Hand
@@ -112,6 +112,10 @@ Public Class WNDMain
     End Sub
 
     Private Sub BTNContinue_Click(sender As Object, e As EventArgs) Handles BTNContinue.Click
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
         If IsNumeric(TBXAnswer.Text) Then
             LBLError.Visible = False
             Choice = CInt(TBXAnswer.Text)
@@ -184,10 +188,6 @@ Public Class WNDMain
         Else
             LBLError.Visible = True
         End If
-        If Sound = True Then
-            ' Play the click sound
-            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
-        End If
     End Sub
 
     Private Sub TBXAnswer_TextChanged(sender As Object, e As EventArgs) Handles TBXAnswer.TextChanged
@@ -195,6 +195,10 @@ Public Class WNDMain
     End Sub
 
     Private Sub BTNRestart_Click(sender As Object, e As EventArgs) Handles BTNRestart.Click
+        If Sound = True Then
+            ' Play the click sound
+            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
+        End If
         LBLTime.Visible = False
         PBXStars.Visible = False
         LBLWonQuestionsInfo.Visible = False
@@ -232,10 +236,6 @@ Public Class WNDMain
         Choice = 0
         StrMin = ""
         StrSec = ""
-        If Sound = True Then
-            ' Play the click sound
-            My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
-        End If
     End Sub
 
     Private Sub PBXSound_Click(sender As Object, e As EventArgs) Handles PBXSound.Click
