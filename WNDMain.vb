@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing.Text
 
 Public Class WNDMain
+    ' Define game variables
     Public Time As Integer = 0
     Public TimeMin As Integer = 0
     Public TimeSec As Integer = 0
@@ -17,10 +18,12 @@ Public Class WNDMain
     Public Sound As Boolean = True
     Public Score As Integer = 0
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
+        ' Verify sound status
         If Sound = True Then
             ' Play the click sound
             My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
         End If
+        ' Start the timer
         Timer.Start()
         ' Hide unused elements
         LBLTitle.Visible = False
@@ -32,10 +35,14 @@ Public Class WNDMain
         ' Set the question number to 1
         QuestionNumber = 1
 
+        ' Show new elements
         LBLTime.Visible = True
         LBLQuestionNumber.Visible = True
 
+        ' Initialize Randomisation function
         Randomize()
+
+        ' 
         OperatorVal = Fix(Rnd() * 4)
         If OperatorVal = 0 Then
             LBLOperator.Text = "+"
