@@ -15,6 +15,7 @@ Public Class WNDMain
     Public StrMin As String = ""
     Public StrSec As String = ""
     Public Sound As Boolean = True
+    Public Score As Integer = 0
     Private Sub BTNStart_Click(sender As Object, e As EventArgs) Handles BTNStart.Click
         If Sound = True Then
             ' Play the click sound
@@ -151,20 +152,34 @@ Public Class WNDMain
                 LBLNumber1.Text = CStr(Number1)
                 LBLNumber2.Text = CStr(Number2)
             Else
-                If Time <= 15 Then
-                    PBXStars.Image = My.Resources.Étoiles_5
-                ElseIf Time <= 30 Then
-                    PBXStars.Image = My.Resources.Étoiles_4
+                Timer.Stop()
+                If Time <= 30 Then
+                    Score = (GamesWon * 0.25) + 2.5
+                ElseIf Time <= 45 Then
+                    Score = (GamesWon * 0.25) + 2
                 ElseIf Time <= 60 Then
-                    PBXStars.Image = My.Resources.Étoiles_3
+                    Score = (GamesWon * 0.25) + 1.5
+                ElseIf Time <= 75 Then
+                    Score = (GamesWon * 0.25) + 1
                 ElseIf Time <= 90 Then
-                    PBXStars.Image = My.Resources.Étoiles_2
-                ElseIf Time <= 135 Then
-                    PBXStars.Image = My.Resources.Étoiles_1
+                    Score = (GamesWon * 0.25) + 0.5
                 Else
+                    Score = GamesWon * 0.25
+                End If
+
+                If Score > 4 And Score <= 5 Then
+                    PBXStars.Image = My.Resources.Étoiles_5
+                ElseIf Score > 3 And Score <= 4 Then
+                    PBXStars.Image = My.Resources.Étoiles_4
+                ElseIf Score > 2 And Score <= 3 Then
+                    PBXStars.Image = My.Resources.Étoiles_3
+                ElseIf Score > 1 And Score <= 2 Then
+                    PBXStars.Image = My.Resources.Étoiles_2
+                ElseIf Score > 0 And Score <= 1 Then
+                    PBXStars.Image = My.Resources.Étoiles_1
+                ElseIf Score <= 0 Then
                     PBXStars.Image = My.Resources.Étoiles_0
                 End If
-                Timer.Stop()
                 PBXStars.Visible = True
                 LBLQuestionNumber.Visible = False
                 LBLNumber1.Visible = False
@@ -236,6 +251,7 @@ Public Class WNDMain
         Choice = 0
         StrMin = ""
         StrSec = ""
+        Score = 0
     End Sub
 
     Private Sub PBXSound_Click(sender As Object, e As EventArgs) Handles PBXSound.Click
