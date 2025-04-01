@@ -1,4 +1,10 @@
-﻿Imports System.Drawing.Text
+﻿' Arithmetic Empire
+' By Merlot44
+' Date: 4/1/2025
+' Version: 1.0.0
+' Github Repository : www.github.com/Merlot44/Arithmetic-Empire/
+
+Imports System.Drawing.Text
 
 Public Class WNDMain
     ' Define game variables
