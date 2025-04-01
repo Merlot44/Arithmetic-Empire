@@ -331,6 +331,7 @@ Partial Class WNDMain
         Controls.Add(BTNStart)
         Controls.Add(PBXSound)
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         Name = "WNDMain"
         Text = "L'empire arithmétique"
