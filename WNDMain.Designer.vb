@@ -63,7 +63,7 @@ Partial Class WNDMain
         ' LBLTitle
         ' 
         LBLTitle.BackColor = Color.Transparent
-        LBLTitle.Font = New Font("Microsoft Sans Serif", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LBLTitle.Font = New Font("Comic Sans MS", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         LBLTitle.ForeColor = Color.White
         LBLTitle.Location = New Point(27, 12)
         LBLTitle.Name = "LBLTitle"
