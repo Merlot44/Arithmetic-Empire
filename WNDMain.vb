@@ -48,7 +48,7 @@ Public Class WNDMain
         ' Initialize Randomisation function
         Randomize()
 
-        ' 
+        ' Calculate random values
         OperatorVal = Fix(Rnd() * 4)
         If OperatorVal = 0 Then
             LBLOperator.Text = "+"
@@ -72,10 +72,11 @@ Public Class WNDMain
             Number1 = Answer * Number2
         End If
 
-
+        ' Display the values
         LBLNumber1.Text = CStr(Number1)
         LBLNumber2.Text = CStr(Number2)
 
+        ' Display the values for the question
         LBLNumber1.Visible = True
         LBLOperator.Visible = True
         LBLNumber2.Visible = True
@@ -84,15 +85,20 @@ Public Class WNDMain
         BTNContinue.Visible = True
     End Sub
     Private Sub BTNInstructions_Click(sender As Object, e As EventArgs) Handles BTNInstructions.Click
+        ' Verify sound status
         If Sound = True Then
             ' Play the click sound
             My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
         End If
+
+        ' Show instructions
         BTNInstructions.Visible = False
         BackgroundImage = My.Resources.Page_2
         BTNStart.Location = New Point(38, 192)
         LBLInstructions.Visible = True
     End Sub
+
+    ' Set labels to act as buttons
     Private Sub BTNStart_MouseHover(sender As Object, e As EventArgs) Handles BTNStart.MouseHover
         BTNStart.Cursor = Cursors.Hand
     End Sub
@@ -108,10 +114,15 @@ Public Class WNDMain
     Private Sub BTNRestart_MouseHover(sender As Object, e As EventArgs) Handles BTNRestart.MouseHover
         BTNRestart.Cursor = Cursors.Hand
     End Sub
+
+    ' Setup timer
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        ' Calculate time
         Time += 1
         TimeMin = Fix(Time / 60)
         TimeSec = Time - (60 * TimeMin)
+
+        ' Display time
         If TimeMin < 10 Then
             StrMin = "0" + CStr(TimeMin)
         Else
@@ -126,20 +137,38 @@ Public Class WNDMain
     End Sub
 
     Private Sub BTNContinue_Click(sender As Object, e As EventArgs) Handles BTNContinue.Click
+        ' Verify sound status
         If Sound = True Then
             ' Play the click sound
             My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
         End If
+
+        ' Verify that the value is numeric
         If IsNumeric(TBXAnswer.Text) Then
             LBLError.Visible = False
+
+            ' Store the user's choice
             Choice = CInt(TBXAnswer.Text)
+
+            ' Increment the games played statistic
             GamesPlayed += 1
+
+            ' Verify that the answer is right
             If Choice = Answer Then
+
+                ' Increment the games won statistic
                 GamesWon += 1
             End If
+
+            ' Verify that it's not the last question
             If QuestionNumber < 10 Then
+                ' Increment the number of the question
                 QuestionNumber += 1
+
+                ' Display the number of the question
                 LBLQuestionNumber.Text = "#" + CStr(QuestionNumber)
+
+                ' Calculate random values
                 OperatorVal = Fix(Rnd() * 4)
                 If OperatorVal = 0 Then
                     LBLOperator.Text = "+"
@@ -162,10 +191,15 @@ Public Class WNDMain
                     Number2 = Fix((Rnd() * 20) + 1)
                     Number1 = Answer * Number2
                 End If
+
+                ' Display the values
                 LBLNumber1.Text = CStr(Number1)
                 LBLNumber2.Text = CStr(Number2)
             Else
+                ' Stop playing sound
                 Timer.Stop()
+
+                ' Calculate a score based on elapsed time and correctly answered questions
                 If Time <= 30 Then
                     Score = (GamesWon * 0.25) + 2.5
                 ElseIf Time <= 45 Then
@@ -180,6 +214,7 @@ Public Class WNDMain
                     Score = GamesWon * 0.25
                 End If
 
+                ' Display a star-based score
                 If Score > 4 And Score <= 5 Then
                     PBXStars.Image = My.Resources.Étoiles_5
                 ElseIf Score > 3 And Score <= 4 Then
@@ -193,7 +228,8 @@ Public Class WNDMain
                 ElseIf Score <= 0 Then
                     PBXStars.Image = My.Resources.Étoiles_0
                 End If
-                PBXStars.Visible = True
+
+                ' Hide unnecessary elements
                 LBLQuestionNumber.Visible = False
                 LBLNumber1.Visible = False
                 LBLOperator.Visible = False
@@ -201,32 +237,47 @@ Public Class WNDMain
                 TBXAnswer.Visible = False
                 BTNContinue.Visible = False
                 LBLEqual.Visible = False
+
+                ' Reposition the chronometer
                 LBLTime.Location = New Point(367, 31)
                 LBLTime.Size = New Point(226, 94)
+
+                ' Change the bachground
                 BackgroundImage = My.Resources.Page_4
+
+                ' Display statistics
+                PBXStars.Visible = True
                 LBLWonQuestionsInfo.Visible = True
                 LBLWonQuestions.Text = CStr(GamesWon)
                 LBLWonQuestions.Visible = True
                 LBLWonPercentageInfo.Visible = True
                 LBLWonPercentage.Text = CStr((GamesWon / GamesPlayed) * 100) + "%"
                 LBLWonPercentage.Visible = True
+
+                ' Display restart button
                 BTNRestart.Visible = True
             End If
+            ' Clear the answer field
             TBXAnswer.Text = ""
         Else
+            ' Hide the error message
             LBLError.Visible = True
         End If
     End Sub
 
     Private Sub TBXAnswer_TextChanged(sender As Object, e As EventArgs) Handles TBXAnswer.TextChanged
+        ' Hide the error message
         LBLError.Visible = False
     End Sub
 
     Private Sub BTNRestart_Click(sender As Object, e As EventArgs) Handles BTNRestart.Click
+        ' Verify sound status
         If Sound = True Then
             ' Play the click sound
             My.Computer.Audio.Play(My.Resources.Click, AudioPlayMode.Background)
         End If
+
+        ' Reset elements to starting state
         LBLTime.Visible = False
         PBXStars.Visible = False
         LBLWonQuestionsInfo.Visible = False
@@ -242,15 +293,15 @@ Public Class WNDMain
         LBLTime.Size = New Point(228, 97)
         BTNStart.Location = New Point(38, 260)
 
+        ' Clear Variables
         LBLTime.Text = "00 : 00"
         TBXAnswer.Text = ""
         LBLQuestionNumber.Text = "#1"
         LBLNumber1.Text = "1"
         LBLNumber2.Text = "1"
         LBLOperator.Text = "+"
-        LBLWonQuestions.Text = 0
-        LBLWonPercentage.Text = 0%
-
+        LBLWonQuestions.Text = "0"
+        LBLWonPercentage.Text = "0%"
         Time = 0
         TimeMin = 0
         TimeSec = 0
