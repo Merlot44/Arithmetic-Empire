@@ -19,8 +19,5 @@ After the ten questions have been answered, the player can restart the game by c
 **Correctly Answered Questions:** After the ten questions have been answered, The number of correctly answered questions will be displayed.  
 **Success Percentage:** After the ten questions have been answered, the success percentage will be displayed.
 
-## Upcoming:
-Comment code to better document it's function.
-
 ## Notes:
 This application has been designed with all it's variables named in english. However, all the User-Interface text is in french.
