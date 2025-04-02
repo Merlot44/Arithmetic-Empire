@@ -5,6 +5,7 @@ This is a game of mathematics to help kids with arithmetics including addition, 
 
 ## Features:
 Randomly chooses between the four arithmetic operators: +, -, ×, and ÷.  
+Interface for french people  
 Sound can be muted for a peacfull experience.  
 Ten questions are asked to provide an accurate score based on the kid's successfully answered questions and the elapsed time.  
 The numbers should always be whole values to make it easier for kids to solve.  
@@ -20,3 +21,6 @@ After the ten questions have been answered, the player can restart the game by c
 
 ## Upcoming:
 Comment code to better document it's function.
+
+## Notes:
+This application has been designed with all it's variables named in english. However, all the User-Interface text is in french.
