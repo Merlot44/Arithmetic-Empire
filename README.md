@@ -5,8 +5,8 @@ This is a game of mathematics to help kids with arithmetics including addition, 
 
 ## Features:
 Randomly chooses between the four arithmetic operators: +, -, ×, and ÷.  
-Interface for french people  
-Sound can be muted for a peacfull experience.  
+Interface in french 
+Sound can be muted for a peaceful experience.  
 Ten questions are asked to provide an accurate score based on the kid's successfully answered questions and the elapsed time.  
 The numbers should always be whole values to make it easier for kids to solve.  
 After the ten questions have been answered, the player can restart the game by clicking the "Restart" button.
